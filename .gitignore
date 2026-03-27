@@ -1,0 +1,7 @@
+# Dados sensíveis do bot (contatos / relatos) — não versionar
+db jacira.txt
+
+# SO / editor
+.DS_Store
+Thumbs.db
+*.log

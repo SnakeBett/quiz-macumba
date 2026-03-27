@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Espiritual — Maria Padilha & Pomba Gira 7 Saias</title>
+    <meta
+      name="description"
+      content="Quiz gratuito: afastamento, bloqueio espiritual e reconexão. Caminhos com Maria Padilha e Ritual Pomba Gira 7 Saias."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="glow glow-1" aria-hidden="true"></div>
+    <div class="glow glow-2" aria-hidden="true"></div>
+    <div class="glow glow-3" aria-hidden="true"></div>
+
+    <header class="top">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">🌹</span>
+        <div class="brand-stack">
+          <span class="brand-text">Maria Padilha</span>
+          <span class="brand-sub">Pomba Gira · 7 Saias</span>
+        </div>
+      </div>
+      <p class="tagline">Ritual espiritual de reconexão</p>
+      <p class="ornament" aria-hidden="true">✦</p>
+    </header>
+
+    <main class="shell">
+      <nav class="flow-nav" id="flow-nav" aria-label="Etapas do percurso">
+        <ol class="flow-steps" id="flow-steps">
+          <li class="flow-step" data-index="0">
+            <span class="flow-step-indicator">
+              <span class="flow-step-num">1</span>
+            </span>
+            <span class="flow-step-label">Boas-vindas</span>
+          </li>
+          <li class="flow-step" data-index="1">
+            <span class="flow-step-indicator">
+              <span class="flow-step-num">2</span>
+            </span>
+            <span class="flow-step-label">Questionário</span>
+          </li>
+          <li class="flow-step" data-index="2">
+            <span class="flow-step-indicator">
+              <span class="flow-step-num">3</span>
+            </span>
+            <span class="flow-step-label">Sua leitura</span>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Etapa 1 -->
+      <section id="screen-intro" class="panel active">
+        <div class="section-card">
+          <header class="section-head">
+            <p class="section-kicker">Etapa 1 de 3</p>
+            <h1 class="section-title">
+              O afastamento veio<br />
+              <span class="h1-accent">sem explicação?</span>
+            </h1>
+          </header>
+          <p class="lead section-lead">
+            Quando o silêncio cresce e o carinho esfria, muitas vezes há um
+            <strong>bloqueio no campo</strong> entre vocês — não é fraqueza, é um padrão
+            energético comum em histórias de amor. Este questionário ajuda a
+            <em>organizar o que você sente</em> e aponta caminhos espirituais alinhados ao seu perfil.
+          </p>
+          <div class="value-grid">
+            <div class="value-item">
+              <span class="value-icon" aria-hidden="true">◇</span>
+              <div>
+                <p class="value-title">Rápido e privado</p>
+                <p class="value-desc">7 perguntas, cerca de 2 minutos. Sem cadastro.</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="value-icon" aria-hidden="true">◇</span>
+              <div>
+                <p class="value-title">Leitura orientativa</p>
+                <p class="value-desc">Resultado simbólico, não substitui consulta presencial.</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="value-icon" aria-hidden="true">◇</span>
+              <div>
+                <p class="value-title">Próximos passos claros</p>
+                <p class="value-desc">Links para 7 Saias, jornada Maria Padilha e catálogo.</p>
+              </div>
+            </div>
+          </div>
+          <div class="section-actions">
+            <button type="button" class="btn btn-primary" id="btn-start">
+              Iniciar questionário
+              <span class="btn-shine" aria-hidden="true"></span>
+            </button>
+          </div>
+          <footer class="section-footnote">
+            <p>
+              Ao continuar, você concorda em usar este conteúdo com discernimento e respeito à sua crença.
+            </p>
+          </footer>
+        </div>
+      </section>
+
+      <!-- Etapa 2 -->
+      <section id="screen-quiz" class="panel" hidden>
+        <div class="section-card section-card--quiz">
+          <header class="quiz-top">
+            <div class="quiz-top-row">
+              <p class="section-kicker">Etapa 2 de 3 · Questionário</p>
+              <p class="quiz-progress-text" id="quiz-progress-text" aria-live="polite">
+                Pergunta 1 de 7
+              </p>
+            </div>
+            <div
+              class="progress-track progress-track--lg"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+              aria-label="Progresso do questionário"
+              id="progress-bar"
+            >
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <p class="quiz-theme" id="quiz-theme">Seu momento emocional</p>
+          </header>
+          <h2 class="question" id="question-text"></h2>
+          <p class="question-hint">Toque na opção que mais se aproxima da sua realidade hoje.</p>
+          <div class="options" id="options-root" role="radiogroup"></div>
+          <div class="quiz-footer">
+            <button type="button" class="btn-back" id="btn-back" disabled>
+              <span class="btn-back-icon" aria-hidden="true">←</span>
+              <span>Pergunta anterior</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Etapa 3 -->
+      <section id="screen-result" class="panel" hidden>
+        <div class="section-card section-card--result">
+          <header class="result-header">
+            <div class="result-badge" aria-hidden="true">
+              <svg class="result-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <p class="section-kicker section-kicker--gold">Etapa 3 de 3</p>
+            <p class="result-eyebrow">Leitura do questionário</p>
+            <h2 class="result-title" id="result-title"></h2>
+          </header>
+          <div class="result-prose">
+            <p id="result-body"></p>
+          </div>
+          <aside class="guidance-card" aria-label="Orientação simbólica">
+            <p class="guidance-label">Orientação dos guias</p>
+            <p class="guidance-text" id="result-hint"></p>
+          </aside>
+          <section class="cta-section" aria-labelledby="cta-heading">
+            <div class="cta-section-head">
+              <h3 class="cta-section-title" id="cta-heading">Como seguir em frente</h3>
+              <p class="cta-section-lead">
+                Escolha a oferta que conversa com o que você busca. Você pode abrir mais de um link para comparar com calma.
+              </p>
+            </div>
+            <ul class="cta-list">
+              <li class="cta-item">
+                <div class="cta-item-body">
+                  <h4 class="cta-item-title">Ritual Pomba Gira — 7 Saias</h4>
+                  <p class="cta-item-desc">
+                    Foco em bloqueio, silêncio e reconexão no campo afetivo. Ideal quando a distância parece “travada”.
+                  </p>
+                </div>
+                <a
+                  class="btn btn-7saias"
+                  href="https://7saias.shop"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Acessar 7saias.shop
+                  <span class="btn-arrow" aria-hidden="true">→</span>
+                </a>
+              </li>
+              <li class="cta-item">
+                <div class="cta-item-body">
+                  <h4 class="cta-item-title">Jornada Maria Padilha — 7 dias</h4>
+                  <p class="cta-item-desc">
+                    Ritual estruturado em etapas, com narrativa e conversão na linha Maria Padilha.
+                  </p>
+                </div>
+                <a
+                  class="btn btn-primary"
+                  id="cta-main"
+                  href="https://amor-magico-conversion.lovable.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Abrir página do ritual
+                  <span class="btn-shine" aria-hidden="true"></span>
+                </a>
+              </li>
+              <li class="cta-item cta-item--muted">
+                <div class="cta-item-body">
+                  <h4 class="cta-item-title">Catálogo de trabalhos</h4>
+                  <p class="cta-item-desc">
+                    Outras opções na bio: adoçamento, amarração coletiva e materiais promocionais.
+                  </p>
+                </div>
+                <a
+                  class="btn btn-secondary"
+                  href="https://biolink.website/Trabalhosefeiticos"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ver bio link
+                </a>
+              </li>
+            </ul>
+          </section>
+          <div class="result-actions">
+            <button type="button" class="btn btn-ghost" id="btn-restart">Refazer o questionário</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>Conteúdo espiritual orientativo. Cada pessoa responde por suas escolhas e sua fé.</p>
+    </footer>
+
+    <script src="quiz.js"></script>
+  </body>
+</html>
