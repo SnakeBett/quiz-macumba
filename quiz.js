@@ -1,6 +1,18 @@
 (function () {
   "use strict";
 
+  /* ──────────────── Tracking ──────────────── */
+  function track(event, data) {
+    // Clarity custom tags
+    if (typeof window.clarity === "function") {
+      window.clarity("set", event, JSON.stringify(data || {}));
+    }
+    // dataLayer for GTM / GA4 if wired later
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event, ...data });
+  }
+
+  /* ──────────────── Questions ──────────────── */
   const QUESTIONS = [
     {
       id: "heart",
@@ -81,37 +93,34 @@
     },
   ];
 
+  /* ──────────────── Results ──────────────── */
   const RESULTS = [
     {
       id: "binding",
       match: (s) => s.tie >= 5 && s.urgent >= 2,
       title: "Perfil: laço profundo ainda ativo",
-      body:
-        "Suas respostas sugerem um vínculo que não se dissolveu só no plano da razão: há saudade, tempo carregado e sensação de ligação. Em muitos casos, isso pede um trabalho que alinhe energia e favoreça reaproximação sem humilhação nem pressão desalinhada com o livre-arbítrio.",
+      body: "Suas respostas sugerem um vínculo que não se dissolveu só no plano da razão: há saudade, tempo carregado e sensação de ligação. Em muitos casos, isso pede um trabalho que alinhe energia e favoreça reaproximação sem humilhação nem pressão desalinhada com o livre-arbítrio.",
       hint: "A linha costuma indicar fortalecimento de vínculo e abertura de diálogo. Compare o Ritual 7 Saias (bloqueio e campo entre duas pessoas) com a jornada Maria Padilha em 7 dias para ver qual formato combina mais com você.",
     },
     {
       id: "sweeten",
       match: (s) => s.hope >= 4 && s.urgent < 3,
       title: "Perfil: esperança viva — clima pede suavidade",
-      body:
-        "Você ainda não fechou a porta. O padrão que aparece é de tensão ou frieza no ambiente emocional, não de ausência total de caminho. Muitas vezes o próximo passo é suavizar o campo: menos atrito, mais atração e lembrança afetiva positiva.",
+      body: "Você ainda não fechou a porta. O padrão que aparece é de tensão ou frieza no ambiente emocional, não de ausência total de caminho. Muitas vezes o próximo passo é suavizar o campo: menos atrito, mais atração e lembrança afetiva positiva.",
       hint: "Trabalhos de adoçamento e harmonia costumam ser mencionados quando ainda há porta entreaberta ou memória afetiva forte. O catálogo na bio costuma reunir variações desse tipo de encaminhamento.",
     },
     {
       id: "urgent",
       match: (s) => s.urgent >= 5,
-      title: "Perfil: urgência alta — pedido de encaminhamento direto",
-      body:
-        "O tempo e o desgaste aparecem no limite. Suas respostas pedem clareza rápida e um ritual com narrativa objetiva, sem rodeios. O importante é escolher um caminho em que você confie e que respeite sua segurança emocional.",
+      title: "Perfil: urgência alta — encaminhamento direto",
+      body: "O tempo e o desgaste aparecem no limite. Suas respostas pedem clareza rápida e um ritual com narrativa objetiva, sem rodeios. O importante é escolher um caminho em que você confie e que respeite sua segurança emocional.",
       hint: "Em afastamento seco, muitas pessoas olham primeiro para propostas que falam em quebra de barreira e reaproximação (7 Saias) e, em paralelo, para uma jornada estruturada (7 dias Maria Padilha). Leia as duas páginas e sinta qual ressoa.",
     },
     {
       id: "default",
       match: () => true,
-      title: "Perfil: misto — pedido de clareza e escolha consciente",
-      body:
-        "Há combinação de esperança, cansaço e dúvida: comum em quem ama de verdade. Isso não é falha; é sinal de que vale parar para nomear o que trava e escolher um trabalho alinhado à sua intenção, sem autopunição.",
+      title: "Perfil: misto — clareza e escolha consciente",
+      body: "Há combinação de esperança, cansaço e dúvida: comum em quem ama de verdade. Isso não é falha; é sinal de que vale parar para nomear o que trava e escolher um trabalho alinhado à sua intenção, sem autopunição.",
       hint: "Use os links abaixo como menu: 7 Saias para foco em bloqueio/reconexão, Maria Padilha em 7 dias para ritual guiado em etapas, bio link para explorar outras linhas quando quiser comparar.",
     },
   ];
@@ -120,8 +129,9 @@
 
   let step = 0;
   const scores = { hope: 0, tie: 0, urgent: 0 };
-  /** @type {{ hope?: number; tie?: number; urgent?: number }[]} */
   const scoreHistory = [];
+  const answerHistory = [];
+  const startTime = Date.now();
 
   const flowStepEls = document.querySelectorAll("#flow-steps .flow-step");
 
@@ -150,6 +160,13 @@
     resultHint: document.getElementById("result-hint"),
   };
 
+  /* ──────────────── Reveal on scroll / panel entry ──────────────── */
+  function activateReveals(root) {
+    root.querySelectorAll(".reveal:not(.is-visible)").forEach((el, i) => {
+      setTimeout(() => el.classList.add("is-visible"), 80 * i);
+    });
+  }
+
   function showPanel(name) {
     el.intro.classList.toggle("active", name === "intro");
     el.intro.hidden = name !== "intro";
@@ -161,6 +178,10 @@
     if (name === "intro") setFlowStep(0);
     else if (name === "quiz") setFlowStep(1);
     else if (name === "result") setFlowStep(2);
+
+    const root =
+      name === "intro" ? el.intro : name === "quiz" ? el.quiz : el.result;
+    requestAnimationFrame(() => activateReveals(root));
   }
 
   function addScores(delta) {
@@ -194,12 +215,18 @@
   function renderQuestion() {
     const q = QUESTIONS[step];
     if (el.quizTheme) el.quizTheme.textContent = q.section;
+
+    el.question.classList.remove("q-enter");
+    void el.question.offsetWidth;
+    el.question.classList.add("q-enter");
     el.question.textContent = q.text;
+
     el.options.innerHTML = "";
     q.options.forEach((opt, i) => {
       const btn = document.createElement("button");
       btn.type = "button";
-      btn.className = "option";
+      btn.className = "option opt-enter";
+      btn.style.animationDelay = (i * 0.06) + "s";
       btn.setAttribute("role", "radio");
       btn.setAttribute("aria-checked", "false");
 
@@ -229,17 +256,28 @@
       btn.appendChild(row);
 
       btn.addEventListener("click", () => {
+        btn.classList.add("opt-selected");
         const delta = opt.score || {};
         scoreHistory.push(delta);
+        answerHistory.push({ q: q.id, a: opt.label });
         addScores(delta);
-        if (step < QUESTIONS.length - 1) {
-          step += 1;
-          renderQuestion();
-          setProgress();
-          el.btnBack.disabled = step === 0;
-        } else {
-          finishQuiz();
-        }
+
+        track("quiz_answer", {
+          question_id: q.id,
+          question_index: step + 1,
+          answer: opt.label,
+        });
+
+        setTimeout(() => {
+          if (step < QUESTIONS.length - 1) {
+            step += 1;
+            renderQuestion();
+            setProgress();
+            el.btnBack.disabled = step === 0;
+          } else {
+            finishQuiz();
+          }
+        }, 260);
       });
       el.options.appendChild(btn);
     });
@@ -259,6 +297,16 @@
     el.resultTitle.textContent = r.title;
     el.resultBody.textContent = r.body;
     el.resultHint.textContent = r.hint;
+
+    const elapsed = Math.round((Date.now() - startTime) / 1000);
+    track("quiz_complete", {
+      result_id: r.id,
+      result_title: r.title,
+      scores: { ...scores },
+      duration_seconds: elapsed,
+      answers: answerHistory,
+    });
+
     showPanel("result");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -269,12 +317,26 @@
     scores.tie = 0;
     scores.urgent = 0;
     scoreHistory.length = 0;
+    answerHistory.length = 0;
+    track("quiz_restart", {});
     showPanel("quiz");
     renderQuestion();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  /* ──────────────── CTA tracking ──────────────── */
+  document.querySelectorAll("[data-track]").forEach((a) => {
+    a.addEventListener("click", () => {
+      track("cta_click", {
+        cta_id: a.dataset.track,
+        href: a.href,
+      });
+    });
+  });
+
+  /* ──────────────── Events ──────────────── */
   el.btnStart.addEventListener("click", () => {
+    track("quiz_start", {});
     showPanel("quiz");
     renderQuestion();
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -283,6 +345,7 @@
   el.btnBack.addEventListener("click", () => {
     if (step <= 0) return;
     const last = scoreHistory.pop();
+    answerHistory.pop();
     if (last) subtractScores(last);
     step -= 1;
     renderQuestion();
@@ -299,4 +362,7 @@
   });
 
   setFlowStep(0);
+  activateReveals(el.intro);
+
+  track("page_view", { referrer: document.referrer });
 })();

@@ -4,14 +4,69 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz Espiritual — Maria Padilha & Pomba Gira 7 Saias</title>
-    <meta
-      name="description"
-      content="Quiz gratuito: afastamento, bloqueio espiritual e reconexão. Caminhos com Maria Padilha e Ritual Pomba Gira 7 Saias."
-    />
+    <meta name="description" content="Quiz gratuito: descubra se há bloqueio espiritual no amor e qual ritual combina com você. Maria Padilha e Pomba Gira 7 Saias." />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <link rel="canonical" href="https://quiz-macumba.vercel.app/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content="Quiz Espiritual — Maria Padilha & Pomba Gira 7 Saias" />
+    <meta property="og:description" content="7 perguntas para revelar o que trava seu amor. Resultado imediato + caminhos com ritual 7 Saias e Maria Padilha." />
+    <meta property="og:url" content="https://quiz-macumba.vercel.app/" />
+    <meta property="og:site_name" content="Maria Padilha · Pomba Gira 7 Saias" />
+    <meta property="og:image" content="https://quiz-macumba.vercel.app/og-cover.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Quiz Espiritual — Maria Padilha & Pomba Gira 7 Saias" />
+    <meta name="twitter:description" content="Descubra se há bloqueio no campo e qual ritual combina com seu caso." />
+    <meta name="twitter:image" content="https://quiz-macumba.vercel.app/og-cover.png" />
+
+    <!-- JSON-LD: Quiz structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Quiz",
+      "name": "Quiz Espiritual — Bloqueio no Amor",
+      "description": "7 perguntas para identificar padrões emocionais e espirituais no campo do amor.",
+      "educationalAlignment": {
+        "@type": "AlignmentObject",
+        "targetName": "Ritual espiritual de reconexão"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Maria Padilha · Pomba Gira 7 Saias"
+      },
+      "numberOfQuestions": 7,
+      "hasPart": [
+        { "@type": "Question", "name": "Como você descreve seu coração neste momento?" },
+        { "@type": "Question", "name": "Há quanto tempo essa situação pesa em você?" },
+        { "@type": "Question", "name": "Você já tentou se aproximar ou conversar de novo?" },
+        { "@type": "Question", "name": "O que mais trava você hoje?" },
+        { "@type": "Question", "name": "Você sente que ainda existe uma ligação inexplicável entre vocês?" },
+        { "@type": "Question", "name": "Sobre trabalho espiritual ou ritual, você…" },
+        { "@type": "Question", "name": "Quão urgente é para você ver movimento nessa história?" }
+      ]
+    }
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window,document,"clarity","script","COLOQUE_SEU_ID_CLARITY_AQUI");
+    </script>
+
+    <!-- Fonts + CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -38,29 +93,23 @@
       <nav class="flow-nav" id="flow-nav" aria-label="Etapas do percurso">
         <ol class="flow-steps" id="flow-steps">
           <li class="flow-step" data-index="0">
-            <span class="flow-step-indicator">
-              <span class="flow-step-num">1</span>
-            </span>
+            <span class="flow-step-indicator"><span class="flow-step-num">1</span></span>
             <span class="flow-step-label">Boas-vindas</span>
           </li>
           <li class="flow-step" data-index="1">
-            <span class="flow-step-indicator">
-              <span class="flow-step-num">2</span>
-            </span>
+            <span class="flow-step-indicator"><span class="flow-step-num">2</span></span>
             <span class="flow-step-label">Questionário</span>
           </li>
           <li class="flow-step" data-index="2">
-            <span class="flow-step-indicator">
-              <span class="flow-step-num">3</span>
-            </span>
+            <span class="flow-step-indicator"><span class="flow-step-num">3</span></span>
             <span class="flow-step-label">Sua leitura</span>
           </li>
         </ol>
       </nav>
 
-      <!-- Etapa 1 -->
+      <!-- Etapa 1: Intro -->
       <section id="screen-intro" class="panel active">
-        <div class="section-card">
+        <div class="section-card reveal">
           <header class="section-head">
             <p class="section-kicker">Etapa 1 de 3</p>
             <h1 class="section-title">
@@ -74,52 +123,54 @@
             energético comum em histórias de amor. Este questionário ajuda a
             <em>organizar o que você sente</em> e aponta caminhos espirituais alinhados ao seu perfil.
           </p>
-          <div class="value-grid">
+          <div class="social-proof reveal">
+            <p class="social-proof-text">
+              <span class="social-proof-num" id="live-counter">1.247</span>
+              pessoas já fizeram este quiz
+            </p>
+          </div>
+          <div class="value-grid reveal">
             <div class="value-item">
-              <span class="value-icon" aria-hidden="true">◇</span>
+              <span class="value-icon" aria-hidden="true">🔒</span>
               <div>
                 <p class="value-title">Rápido e privado</p>
                 <p class="value-desc">7 perguntas, cerca de 2 minutos. Sem cadastro.</p>
               </div>
             </div>
             <div class="value-item">
-              <span class="value-icon" aria-hidden="true">◇</span>
+              <span class="value-icon" aria-hidden="true">✦</span>
               <div>
                 <p class="value-title">Leitura orientativa</p>
                 <p class="value-desc">Resultado simbólico, não substitui consulta presencial.</p>
               </div>
             </div>
             <div class="value-item">
-              <span class="value-icon" aria-hidden="true">◇</span>
+              <span class="value-icon" aria-hidden="true">🌹</span>
               <div>
                 <p class="value-title">Próximos passos claros</p>
                 <p class="value-desc">Links para 7 Saias, jornada Maria Padilha e catálogo.</p>
               </div>
             </div>
           </div>
-          <div class="section-actions">
-            <button type="button" class="btn btn-primary" id="btn-start">
+          <div class="section-actions reveal">
+            <button type="button" class="btn btn-primary btn-lg" id="btn-start">
               Iniciar questionário
               <span class="btn-shine" aria-hidden="true"></span>
             </button>
           </div>
           <footer class="section-footnote">
-            <p>
-              Ao continuar, você concorda em usar este conteúdo com discernimento e respeito à sua crença.
-            </p>
+            <p>Ao continuar, você concorda em usar este conteúdo com discernimento e respeito à sua crença.</p>
           </footer>
         </div>
       </section>
 
-      <!-- Etapa 2 -->
+      <!-- Etapa 2: Quiz -->
       <section id="screen-quiz" class="panel" hidden>
         <div class="section-card section-card--quiz">
           <header class="quiz-top">
             <div class="quiz-top-row">
               <p class="section-kicker">Etapa 2 de 3 · Questionário</p>
-              <p class="quiz-progress-text" id="quiz-progress-text" aria-live="polite">
-                Pergunta 1 de 7
-              </p>
+              <p class="quiz-progress-text" id="quiz-progress-text" aria-live="polite">Pergunta 1 de 7</p>
             </div>
             <div
               class="progress-track progress-track--lg"
@@ -146,10 +197,10 @@
         </div>
       </section>
 
-      <!-- Etapa 3 -->
+      <!-- Etapa 3: Resultado -->
       <section id="screen-result" class="panel" hidden>
         <div class="section-card section-card--result">
-          <header class="result-header">
+          <header class="result-header reveal">
             <div class="result-badge" aria-hidden="true">
               <svg class="result-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round" />
@@ -159,69 +210,43 @@
             <p class="result-eyebrow">Leitura do questionário</p>
             <h2 class="result-title" id="result-title"></h2>
           </header>
-          <div class="result-prose">
+          <div class="result-prose reveal">
             <p id="result-body"></p>
           </div>
-          <aside class="guidance-card" aria-label="Orientação simbólica">
+          <aside class="guidance-card reveal" aria-label="Orientação simbólica">
             <p class="guidance-label">Orientação dos guias</p>
             <p class="guidance-text" id="result-hint"></p>
           </aside>
-          <section class="cta-section" aria-labelledby="cta-heading">
+          <section class="cta-section reveal" aria-labelledby="cta-heading">
             <div class="cta-section-head">
               <h3 class="cta-section-title" id="cta-heading">Como seguir em frente</h3>
-              <p class="cta-section-lead">
-                Escolha a oferta que conversa com o que você busca. Você pode abrir mais de um link para comparar com calma.
-              </p>
+              <p class="cta-section-lead">Escolha a oferta que conversa com o que você busca. Você pode abrir mais de um link para comparar.</p>
             </div>
             <ul class="cta-list">
-              <li class="cta-item">
+              <li class="cta-item reveal">
                 <div class="cta-item-body">
                   <h4 class="cta-item-title">Ritual Pomba Gira — 7 Saias</h4>
-                  <p class="cta-item-desc">
-                    Foco em bloqueio, silêncio e reconexão no campo afetivo. Ideal quando a distância parece “travada”.
-                  </p>
+                  <p class="cta-item-desc">Foco em bloqueio, silêncio e reconexão. Ideal quando a distância parece "travada".</p>
                 </div>
-                <a
-                  class="btn btn-7saias"
-                  href="https://7saias.shop"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Acessar 7saias.shop
-                  <span class="btn-arrow" aria-hidden="true">→</span>
+                <a class="btn btn-7saias" href="https://7saias.shop" target="_blank" rel="noopener noreferrer" data-track="cta_7saias">
+                  Acessar 7saias.shop <span class="btn-arrow" aria-hidden="true">→</span>
                 </a>
               </li>
-              <li class="cta-item">
+              <li class="cta-item reveal">
                 <div class="cta-item-body">
                   <h4 class="cta-item-title">Jornada Maria Padilha — 7 dias</h4>
-                  <p class="cta-item-desc">
-                    Ritual estruturado em etapas, com narrativa e conversão na linha Maria Padilha.
-                  </p>
+                  <p class="cta-item-desc">Ritual estruturado em etapas, com narrativa guiada.</p>
                 </div>
-                <a
-                  class="btn btn-primary"
-                  id="cta-main"
-                  href="https://amor-magico-conversion.lovable.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Abrir página do ritual
-                  <span class="btn-shine" aria-hidden="true"></span>
+                <a class="btn btn-primary" id="cta-main" href="https://amor-magico-conversion.lovable.app" target="_blank" rel="noopener noreferrer" data-track="cta_padilha">
+                  Abrir página do ritual <span class="btn-shine" aria-hidden="true"></span>
                 </a>
               </li>
-              <li class="cta-item cta-item--muted">
+              <li class="cta-item cta-item--muted reveal">
                 <div class="cta-item-body">
                   <h4 class="cta-item-title">Catálogo de trabalhos</h4>
-                  <p class="cta-item-desc">
-                    Outras opções na bio: adoçamento, amarração coletiva e materiais promocionais.
-                  </p>
+                  <p class="cta-item-desc">Adoçamento, amarração coletiva e materiais na bio.</p>
                 </div>
-                <a
-                  class="btn btn-secondary"
-                  href="https://biolink.website/Trabalhosefeiticos"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a class="btn btn-secondary" href="https://biolink.website/Trabalhosefeiticos" target="_blank" rel="noopener noreferrer" data-track="cta_biolink">
                   Ver bio link
                 </a>
               </li>
